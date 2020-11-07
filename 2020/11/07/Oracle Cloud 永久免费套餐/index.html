@@ -99,7 +99,7 @@
 
 
   <meta name="description" content="保持好奇心和持续学习是一个程序员最好的品质  &amp;emsp;&amp;emsp;最近用了三年优惠价格的阿里云ECS到期了。准备续费的时候，一看那价格，顿时觉得 “套路云” 名不虚传! 去年 Oracle Cloud 刚出来的时候跟风去薅了羊毛，但是爱占便宜的人太多了😂，，当时申请了，根本不能成功创建实例，，最近又试了下，成功了 ！！！ 申请条件 双币信用卡 手机号 邮箱  免费活动地址推荐使用日本，韩国">
-<meta name="keywords" content="ECS,CentOS7">
+<meta name="keywords" content="CentOS7,ECS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle Cloud 永久免费套餐">
 <meta property="og:url" content="https://blog.ihasy.com/2020/11/07/Oracle Cloud 永久免费套餐/index.html">
@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/7d0c199fgy1gkgg4re7byj21hb0nd41d.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/7d0c199fgy1gkggtklriej20cn088jrm.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/7d0c199fgy1gkggvfd9ffj208c01waae.jpg">
-<meta property="og:updated_time" content="2020-11-07T04:37:44.834Z">
+<meta property="og:updated_time" content="2020-11-07T04:59:14.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle Cloud 永久免费套餐">
 <meta name="twitter:description" content="保持好奇心和持续学习是一个程序员最好的品质  &amp;emsp;&amp;emsp;最近用了三年优惠价格的阿里云ECS到期了。准备续费的时候，一看那价格，顿时觉得 “套路云” 名不虚传! 去年 Oracle Cloud 刚出来的时候跟风去薅了羊毛，但是爱占便宜的人太多了😂，，当时申请了，根本不能成功创建实例，，最近又试了下，成功了 ！！！ 申请条件 双币信用卡 手机号 邮箱  免费活动地址推荐使用日本，韩国">
@@ -394,7 +394,7 @@
                 
               
 
-              <time title="创建时间：2020-11-07 12:05:38 / 修改时间：12:37:44" itemprop="dateCreated datePublished" datetime="2020-11-07T12:05:38+08:00">2020-11-07</time>
+              <time title="创建时间：2020-11-07 12:05:38 / 修改时间：12:59:14" itemprop="dateCreated datePublished" datetime="2020-11-07T12:05:38+08:00">2020-11-07</time>
             </span>
           
 
@@ -496,32 +496,21 @@
 <li>有效的域名</li>
 <li>非中国区VPS</li>
 </ul>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
-<li><p>连接VPS, 切换至root用户, 执行以下命令:</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>1、 连接VPS, 切换至root用户, 执行以下命令:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s https://raw.githubusercontent.com/atrandys/trojan/master/trojan_mult.sh)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择1安装trojan<br><img src="http://ww1.sinaimg.cn/large/7d0c199fgy1gkggtklriej20cn088jrm.jpg" alt="image.png"></p>
-</li>
-<li><p>输入域名，不要带http或https，只输入域名即可，例如<code>domain.com</code>或 <code>a.domain.com</code></p>
-</li>
-<li><p>设置trojan密码<br><img src="http://ww1.sinaimg.cn/large/7d0c199fgy1gkggvfd9ffj208c01waae.jpg" alt="image.png"></p>
-</li>
-<li><p>下载配置好的win客户端或复制配置文件保存到本地</p>
-</li>
-</ol>
+
+<p>2、 选择1安装trojan<br><img src="http://ww1.sinaimg.cn/large/7d0c199fgy1gkggtklriej20cn088jrm.jpg" alt="image.png"><br>3、 输入域名，不要带http或https，只输入域名即可，例如<code>domain.com</code>或 <code>a.domain.com</code><br>4、 设置trojan密码<br><img src="http://ww1.sinaimg.cn/large/7d0c199fgy1gkggvfd9ffj208c01waae.jpg" alt="image.png"><br>5、 下载配置好的win客户端或复制配置文件保存到本地</p>
 <ul>
 <li>安装完成后，会自动配置一个windows版trojan客户端，请FTP连接到VPS自行下载即可</li>
 <li>其他客户端请自行下载，使用脚本生成的配置文件。</li>
 </ul>
-<ol start="6">
-<li>使用基本的windows客户端，则直接运行<code>start.bat</code>即可开启代理，其他情况请使用5获取的配置文件自行启动trojan</li>
-</ol>
+<p>6、 使用基本的windows客户端，则直接运行<code>start.bat</code>即可开启代理，其他情况请使用5获取的配置文件自行启动trojan</p>
 <h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ol>
-<li>提示域名解析地址与本VPS IP地址不一致<blockquote>
+<li>提示域名解析地址与本VPS IP地址不一致</li>
+</ol>
+<blockquote>
 <p>A: 请确认域名是否开启CDN, 如开启, 请关闭 !</p>
 </blockquote>
-</li>
-</ol>
 
       
     </div>
@@ -572,9 +561,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/ECS/" rel="tag"># ECS</a>
-          
             <a href="/tags/CentOS7/" rel="tag"># CentOS7</a>
+          
+            <a href="/tags/ECS/" rel="tag"># ECS</a>
           
         </div>
       
