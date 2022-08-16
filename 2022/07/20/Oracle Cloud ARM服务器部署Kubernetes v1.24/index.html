@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="蜡笔小心fly的博客">
 <meta property="og:description" content="环境准备 Oracle Cloud Oracle Linux 8 Ampere ARM处理器 2 cores, 12g memory, bandwidth 2gbps  开启Google BBR TCP加速执行命令1 1wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/sysctl.c">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-08-16T07:39:25.858Z">
+<meta property="og:updated_time" content="2022-08-16T09:58:17.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle Cloud ARM服务器部署Kubernetes v1.24">
 <meta name="twitter:description" content="环境准备 Oracle Cloud Oracle Linux 8 Ampere ARM处理器 2 cores, 12g memory, bandwidth 2gbps  开启Google BBR TCP加速执行命令1 1wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/sysctl.c">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2022-08-16 15:39:25" itemprop="dateModified" datetime="2022-08-16T15:39:25+08:00">2022-08-16</time>
+                <time title="修改时间：2022-08-16 17:58:17" itemprop="dateModified" datetime="2022-08-16T17:58:17+08:00">2022-08-16</time>
               </span>
             
           
@@ -494,8 +494,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装/更新</span></span><br><span class="line"><span class="built_in">source</span> &lt;(curl -sL https://git.io/trojan-install)</span><br><span class="line"></span><br><span class="line"><span class="comment">#卸载</span></span><br><span class="line"><span class="built_in">source</span> &lt;(curl -sL https://git.io/trojan-install) --remove</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>命令行修改trojan端口为38300</li>
-<li>修改<code>/etc/systemd/system/trojan-web.service</code> 配置文件<br>在/usr/local/bin/trojan web 后面添加 -p 8081<br>然后运行:  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart trojan-web</span><br></pre></td></tr></table></figure>
+<li><p>命令行修改trojan端口为38300</p>
+</li>
+<li><p>修改<code>/etc/systemd/system/trojan-web.service</code> 配置文件<br>在/usr/local/bin/trojan web 后面添加 -p 8081<br>然后运行:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart trojan-web</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改trojan-web端口</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/etc/trojan/config.json</span><br></pre></td></tr></table></figure>
+
+<p>将remote_port改为8081</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"remote_port"</span>: 8081,</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -526,7 +534,7 @@
 
 <h3 id="检查所需端口"><a href="#检查所需端口" class="headerlink" title="检查所需端口"></a>检查所需端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nc</span><br><span class="line"></span><br><span class="line">nc 127.0.0.1 6443</span><br></pre></td></tr></table></figure>
 
-<h3 id="禁用swap分区"><a href="#禁用swap分区" class="headerlink" title="禁用swap分区"></a>禁用swap分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂时关闭SWAP分区</span></span><br><span class="line">swapoff -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 永久禁用SWAP分区</span></span><br><span class="line">swapoff -a &amp;&amp; sed -i <span class="string">'/ swap / s/^\(.*\)$/#\1/g'</span> /etc/fstab</span><br></pre></td></tr></table></figure>
+<h3 id="禁用swap分区"><a href="#禁用swap分区" class="headerlink" title="禁用swap分区"></a>禁用swap分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂时关闭SWAP分区</span></span><br><span class="line">swapoff -a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 永久禁用SWAP分区</span></span><br><span class="line">vim /etc/fstab</span><br><span class="line"><span class="comment"># 注释掉下面行</span></span><br><span class="line">/.swapfile      none    swap    sw,comment=cloudconfig  0       0</span><br></pre></td></tr></table></figure>
 
 <h3 id="添加官方repo"><a href="#添加官方repo" class="headerlink" title="添加官方repo"></a>添加官方repo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\<span class="variable">$basearch</span></span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">exclude=kubelet kubeadm kubectl</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
